@@ -134,8 +134,8 @@ u {
 
 @media screen and (max-width: 600px) {
   .mst {
-	margin-left: 30px;
-	margin-right: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 }
 
@@ -210,13 +210,10 @@ desc {
 
 .cr {
 	position: fixed;
-	bottom: 6%;
+	bottom: 2%;
+	right: 2%;
 	padding: 0 8px;
 	z-index: 99999999999999;
-}
-
-.cr {
-	right: 4%;
 }
 
 .bb a {
