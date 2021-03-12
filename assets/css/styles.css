@@ -1,0 +1,17 @@
+::-webkit-scrollbar-thumb:vertical {background-color:#555555; height:5px;}
+
+::-webkit-scrollbar-thumb:horizontal {background-color:#555555; height:5px!important;}
+ ::-webkit-scrollbar {background-color:transparent; height:3px; width:3px;}
+ body {background-color: #fcfcfc; font-family: 'Karla', sans-serif; text-align: center; color: #000;}
+ ::-moz-selection {background-color:#555555; color: #fff;}
+ ::selection {background-color:#555555; color: #fff;}
+ p {margin: 30px 20px; max-width: 1200px}
+ .tb {padding: 1px 7px 1px 8px; margin-top: 50px; margin-bottom: 15px; height: 14px; background: #fff; display: inline-block;}
+ .tt {padding: 1px 23px 1px 25px; margin: -9px -20px 15px -20px; font-size: 14px; text-transform: uppercase; border-bottom: 1px dashed #cecdcd; letter-spacing: 2px; display: block;}
+ img {margin: 3px; padding: 3px; background-color: #fff; border: 1px solid #e4e4e4; object-fit: cover; width: 268px; height: 150px;}
+ a {text-decoration: none; color: #603e73; -moz-transition-duration: .7s; -webkit-transition-duration: .7s; transition-duration: .7s;}
+ a:hover {color: #3b3939;}
+ .bb { width: 150px; position: relative; padding: 6px 11px; font-size: 10px; margin: 4px 10px 25px 10px; letter-spacing: 0.4px; line-height: 160%; text-align: center; text-transform: lowercase; display: block; border: 1px solid #eaeaea; background: #fff;}
+ .bb b {font-weight: 700;}
+ img.tall { object-fit: cover; width: 110px; height: 150px; }
+ img.small { object-fit: cover; width: 150px; height: 150px; }
