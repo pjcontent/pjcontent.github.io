@@ -1,644 +1,748 @@
-<!DOCTYPE html><head>
+<!DOCTYPE html>
+<head>
 
-    <!--------------------------------------------
-    PAGE THEME BY VALERIE /// osvaldrps.tumblr.com
-    please, respect me and my work, and don't remove the credit link;
-    do not claim as yours and do not repost;
-    you can customize it to your liking but only for personal use.
+  <!--------------------------------------------
+  PAGE THEME BY VALERIE /// osvaldrps.tumblr.com
+  please, respect me and my work, and don't remove the credit link;
+  do not claim as yours and do not repost;
+  you can customize it to your liking but only for personal use.
 
-    # isotope combination filtering by magnusthemes
-    -------------------------------------------->
+  # isotope combination filtering by magnusthemes
+  -------------------------------------------->
 
-    <title>PJ Gifs</title> <!-- change the {Title} if you want another tab title -->
+  <title>PJ Gifs</title> <!-- change the {Title} if you want another tab title -->
 
-    <link rel="shortcut icon" href="faveicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script src="https://static.tumblr.com/p0knose/FpAp5c11c/magnusthemes.combofilters.js"></script>
-    <script src="https://scripts.sirv.com/sirv.js"></script>
-    <script>
-$(document).ready(function() {
- var $container = $("#tiles");
- var filters = {};
- var $grid = $container.isotope({
-  itemSelector: ".item",
-  percentPosition: false,
-  masonry: {
-    isFitWidth: true
-  }
- });
- $(".option-set a").click(function(e) {
-  var $this = $(this);
-  var filterAttr = "data-filter-value";
-  var filterValue = $this.attr(filterAttr);
-  var $optionSet = $this.parents(".option-set");
-  var group = $optionSet.attr("data-filter-group");
-  var filterGroup = filters[group];
-  if (!filterGroup) {
-     filterGroup = filters[group] = [];
-  }
-  var $selectAll = $optionSet.find('a['+filterAttr+'=""]');
-  var activeClass = "selected",
-     exclClass = "exclusive";
- comboFiltering($this,filters,filterAttr,filterValue,$optionSet,group,$selectAll,activeClass,exclClass);
-  var comboFilter = getComboFilter(filters);
-  $grid.isotope({
-     filter: comboFilter
-  });
-  $this.toggleClass(activeClass);
-  e.preventDefault();
- });
-});
-</script>
-    <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="faveicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  <script src="https://static.tumblr.com/p0knose/FpAp5c11c/magnusthemes.combofilters.js"></script>
+  <script src="https://scripts.sirv.com/sirv.js"></script>
+  <script>
+    $(document).ready(function() {
+        var $container = $("#tiles");
+        var filters = {};
+        var $grid = $container.isotope({
+            itemSelector: ".item",
+            percentPosition: false,
+            masonry: {
+                isFitWidth: true
+            }
+        });
+        $(".option-set a").click(function(e) {
+            var $this = $(this);
+            var filterAttr = "data-filter-value";
+            var filterValue = $this.attr(filterAttr);
+            var $optionSet = $this.parents(".option-set");
+            var group = $optionSet.attr("data-filter-group");
+            var filterGroup = filters[group];
+            if (!filterGroup) {
+                filterGroup = filters[group] = [];
+            }
+            var $selectAll = $optionSet.find('a[' + filterAttr + '=""]');
+            var activeClass = "selected",
+                exclClass = "exclusive";
+            comboFiltering($this, filters, filterAttr, filterValue, $optionSet, group, $selectAll, activeClass, exclClass);
+            var comboFilter = getComboFilter(filters);
+            $grid.isotope({
+                filter: comboFilter
+            });
+            $this.toggleClass(activeClass);
+            e.preventDefault();
+        });
+    });
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/indexstyles.css">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico"/>
 </head>
-<style type="text/css">
-
-/* 
---------- ---------
-change these using ctrl+f+f (command+f+f) to change color scheme:
-#ffffff - default background color
-#eaeaea - default title background and subtitle border color
-#28bbbb - default accents one
-#3e86d2 - default accents two
-#191919 - default text and scrollbar thumb color
-#e8223e - default links color
-#0e0e0e - default fc names and filters color
---------- ---------
-change these using ctrl+f+f (command+f+f) to change gif size:
-268px - default gif width
-150px - default gif height
-4 - default number of columns
-20px - default space (margin) before and after each column
---------- ---------
-e.g. width:calc(268px * 4 + 20px * 2 * 4) means your page would have four columns with 268px wide gifs in each and 40px margins between columns (20px before + 20px after)
-if you want to adjust margins, change 20px in all width:calc (there're three of them) + in the .item class
---------- ---------
-float:right - default links boxes horizontal poion, change it to float:left if you want boxes to be on the left side of a gif 
-+ change margin:0 8px 0 0 to margin:0 0 0 8px
---------- ---------
-margin-top:calc(150px - 25px) - defailt links boxes vertical position, change it to margin-top:10px if you want boxes to be on top of a gif
---------- ---------
-you can duplicate the <td> </td> part as much as you want, but don't forget to change filter group number, classes, and td width percentage as well:
-100% for one column
-50% and 50% for two
-30% and 40% and 30% (or 35% and 30% and 35%) for three
-25% and 25% and 25% and 25% for four
-delete "exclusive" if you don't need your filters to be exclusive.
---------- ---------
-change text-align:justify; to text-align:center; if you want description text to be centered
---------- ---------
-delete filter:grayscale(100%); from the code if you don't want gifs to be grayscale
---------- ---------
-if you want rounded images and links boxes, add this part right before </ style>
-    .lb1, .lb2 {border-radius:10px;}
-    img {border-radius:14px;}
---------- ---------
-*/
-
-/* if you want tumblr controls to appear on the page, delete from this */
-iframe.tmblr-iframe {display:none!important;}
-/* to this  */
-
-::-webkit-scrollbar {width:5px; height:5px;}
-desc::-webkit-scrollbar {width:1px; height:1px;}
-::-webkit-scrollbar-thumb {background-color:#191919;}
-::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {background-color:#ffffff;} body, .bb, .item, .lb1:hover, .lb2:hover, st, .cr {background-color:#fcfcfc;}
-::-moz-selection {background-color:#e2e2e2;}
-::selection {background-color:#e2e2e2;}
-body, .lb1:hover, .lb2:hover {color:#191919;}
-fc, .filter a {color:#412c4d; margin: 5px;}
-.filter a:hover {color:#aa73c7; opacity:1;}
-body, desc, st {font-size:11px;}
-body {text-align:center; margin:0px; font-size:11px; font-family:'Karla', sans-serif; font-weight:400; letter-spacing:0.6px; line-height:190%;}
-img {width:268px; height:150px; object-fit: cover; }
-a, .lb1, .lb2 {-webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s;}
-a {text-decoration:none; color:#6fc0c7;}
-a:hover {opacity:.8;}
-c {color:#c4769c;}
-.filter a.selected {color:#aa73c7;}
-u {text-decoration:none; border-bottom:1px solid #6fc0c7; padding-bottom:1px;}
-mtitle {display:inline-block; margin:0 auto; padding:25px 0; width:100%; height:15px; background-color:#eaeaea; text-transform:uppercase; letter-spacing:1.8px; font-size:1.3em; line-height:15px;}
-msutitle {display:inline-block; width:100%; padding:30px 0px 31px 0px; line-height:160%; border-bottom:1px solid #eaeaea; margin-bottom:30px;}
-.mst {text-align:center; margin-left: 150px; margin-right: 150px;}
-fltr {display:block; margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; font-weight:700;}
-li {list-style-type:none; display:flex; margin-right:10px;}
-ul {display:inline; list-style-type:none; margin-block-start:0em; margin-block-end:0em; padding-inline-start:0;}
-.item {width:268px; height:170px; margin:0 10px 40px 10px;}
-fc {display:inline-block; width:268px; margin:2px 0 1px 0; padding:0; text-transform:uppercase; letter-spacing:1.2px;}
-lbline {height:auto; font-size:7px; line-height:7px; font-weight:700; text-transform:uppercase; z-index:9999999; margin-top:calc(150px - 25px); width:268px;}
-lbline li {margin:0 8px 0 0; float:right;}
-.lb1, .lb2 {display:inline-block; width:auto; height:7px; padding:5px 9px 4px 10px; color:#ffffff; font-weight:400;}
-.lb2:hover, .lb1:hover {opacity:1;}
-.lb1 {background:#28bbbb;}
-.lb2 {background:#3e86d2;}
-desc {display:inline-block; text-align:justify; width:calc(268px - 6px); padding-right:6px; height:54px; overflow-y:auto; line-height:180%;}
-.cr {position:fixed; bottom:6%; padding:0 8px; font-size:12px; z-index:99999999999999;}
-.cr {right:4%;}
-.bb a {margin:0; color:#69487a; padding: 20px;}
-.fa-arrow-left {margin-right:7px; font-size:10px; color:#69487a;}
-</style>
 <body>
 <mtitle>
-    PJ Gifs
+  PJ Gifs
 </mtitle>
 
-<msutitle><div class="mst">
+<msutitle>
+  <div class="mst">
     <b>rules:</b> please credit <u><a href="https://ransonepj.tumblr.com">ransonepj.tumblr.com</a></u> if you use.
     feel free to use in headers, sidebars, etc. don't redistribute as your own or add to gif hunts.
-    <c>tumblr:</c> you can use in replies but please don't repost. most pages have a link to the original posts where you can reblog.
-    <c>twitter:</c> you can use these with a link back. please don't use in fics without permission.
-    <br /><br />
+    <c>tumblr:</c>
+    you can use in replies but please don't repost. most pages have a link to the original posts where you can reblog.
+    <c>twitter:</c>
+    you can use these with a link back. please don't use in fics without permission.
+    <br/><br/>
     <b>info:</b> sizes aren't labeled, but most gifs are 540px wide. a small portion are 268px wide.
-</div></msutitle>
+  </div>
+</msutitle>
 
 <div class="filter option-set exclusive" data-filter-group="group1" style="padding-bottom: 20px;">
-    <a href="#" data-filter-value="" class="selected">all</a>
-    <a href="#" data-filter-value=".movies">movies</a>
-    <a href="#" data-filter-value=".tv">tv shows</a>
-    <a href="#" data-filter-value=".short">short films</a>
-    <a href="#" data-filter-value=".projects">more projects</a>
-    <a href="#" data-filter-value=".misc">misc</a>
-</div><table><tbody><tr>
-
-</tr></tbody></table>
-<!--<article>-->
-
-<!--------- BOX TEMPLATE ---------
-
-use the template below. DO NOT delete "item" from the class, but feel free to add as many filters instead of
-"FILTERS" as you need, don't forget to separate with spaces.
-
-<div class="item FILTERS"><lbline>
-<li><a class="lb1" href="LINK">link 1</a></li>
-<li><a class="lb2" href="LINK">link 2</a></li>
-</lbline>
-<img src="IMAGE URL"><fc>
-name
-</fc><desc>
-box text goes here
-</desc></div>
-
----------------------------------->
-
-<div id="tiles" style="margin: 0px auto; position: relative;">
-    <div class="item tv short">
-        <a href="/50states.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/50-states-4.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            50 States of Fright
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/astronaut.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/01-2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The American Astronaut
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/bloomin.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/13-12.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Bloomin Mud Shuffle
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/bosch.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/bosch7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Bosch
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/brokencity.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/03-2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Broken City
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/burnnotice.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/02-12.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Burn Notice
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/cabiria.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/a1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Cabiria, Charity, Chastity
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/captivestate.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/c10.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Captive State
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/theclapper.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/cl2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Clapper
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/csi.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/csi8.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            CSI
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/cymbeline.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/ph10.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Cymbeline
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/deadwax.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/scotty2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Deadwax
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/adirtyshame.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/dd6.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            A Dirty Shame
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/doulo.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/dou8.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Doulo
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/downtown.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/bi7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Downtown: A Street Tale
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/electricslide.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/jan4.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Electric Slide
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/empirestate.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/empire.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Empire State
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/falsetrue.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/t11.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            False True Love
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/familyblood.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/christopher-3.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Family Blood
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/thefirst.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/f13.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The First
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/fishinthesea.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/jack7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Fish in the Sea
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/fruitsdemer.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/fruits.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Fruits de Mer
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/gemini.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/03-7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Gemini
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/genkill.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/ray1-3.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Generation Kill
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/goodhumor.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/good.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Good Humor Man
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/hawaii50.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/h7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Hawaii Five-0
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/htmiia.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/14-6.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            How to Make It in America
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/iavov.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/z_(1).gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            In a Valley of Violence
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/insideman.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/in11.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Inside Man
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/fourstories.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/j10.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Introducing Four Stories
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/it.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/eds4.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            IT Chapter 2
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/ithappened.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/02-5.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            It Happened in LA
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/jericho.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/008.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Jericho
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/lawandorder11.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/law.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Law &amp; Order - S11
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/lawandorder17.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/lo1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Law &amp; Order - S17
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/thelie.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/02-7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Lie
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/lws.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/07-6.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Low Winter Sun
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/lutn.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/lutn19-alt.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Light Up the Night
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/kristy.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/01-3.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Kristy
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/manwho.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/man7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Man Who Came Out Only at Night
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/mosaic.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/m13.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Mosaic
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/mrright.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/von9.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Mr. Right
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/mosaic.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/next-three.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Next Three Days
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/oldboy.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/fb187e0916d5d1ca585c80a761504936abfe5687.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Oldboy
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/perfectage.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/0b70ffb31b1960325251d905f411b2d008f2bfc7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Perfect Age of Rock 'n' Roll
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/prius.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/11-6.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Prius - The Longest Chase
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/promnight.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/n7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Prom Night
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/rhs.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/03-1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Red Hook Summer
-        </fc>
-        </a>
-    </div>
-
-    <div class="item tv">
-        <a href="/sealteam.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/r1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Seal Team
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/sinister.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/08-15.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Sinister
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/sinister2.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/deputy1_(5).gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Sinister 2
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/sinister2.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/sme1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Small Engine Repair
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/sonofnoone.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/03-2(1).gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Son of No One
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/starlet.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/05-3.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Starlet
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/tangerine.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/ch2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Tangerine
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/thisamericanlife.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/tal-7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            This American Life
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/timber.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/timber.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            The Timber
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/toughlove.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/04-5.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Tough Love
-        </fc>
-        </a>
-    </div>
-
-    <div class="item short">
-        <a href="/truthordare.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/06-1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Truth or Dare
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/whatwefound.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/wh-10.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            What We Found
-        </fc>
-        </a>
-    </div>
-
-    <div class="item movies">
-        <a href="/writewhen.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/01-7.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Write When You Get Work
-        </fc>
-        </a>
-    </div>
-
-    <div class="item projects">
-        <a href="/miscprojects.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/lovemonkey.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Misc Projects (LQ)
-        </fc>
-        </a>
-    </div>
-
-    <div class="item misc">
-        <a href="/press.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/04-1.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Press and Appearances
-        </fc>
-        </a>
-    </div>
-
-    <div class="item misc">
-        <a href="/surf.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/03-1(1).gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Surf Simply Stories
-        </fc>
-        </a>
-    </div>
-
-    <div class="item misc">
-        <a href="/misc.html"><img class="Sirv" data-src="https://aneusome.sirv.com/previews/05-2.gif?scale.option=fill&scale.width=268&quality=80"><fc>
-            Miscellaneous
-        </fc>
-        </a>
-    </div>
-
-    <a href="https://osvaldrps.tumblr.com" class="cr">ov</a>
+  <a href="#" data-filter-value="" class="selected">all</a>
+  <a href="#" data-filter-value=".movies">movies</a>
+  <a href="#" data-filter-value=".tv">tv shows</a>
+  <a href="#" data-filter-value=".short">short films</a>
+  <a href="#" data-filter-value=".projects">more projects</a>
+  <a href="#" data-filter-value=".misc">misc</a>
 </div>
 
+<div id="tiles" style="margin: 0px auto; position: relative;">
+  <div class="item tv short">
+    <a href="/50states.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/50-states-4.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        50 States of Fright
+      </fc>
+    </a>
+  </div>
 
-</body></html>
+  <div class="item movies">
+    <a href="/astronaut.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/01-2.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The American Astronaut
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/bloomin.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/13-12.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Bloomin Mud Shuffle
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/bosch.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/bosch7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Bosch
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/brokencity.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/03-2.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Broken City
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/burnnotice.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/02-12.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Burn Notice
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/cabiria.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/a1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Cabiria, Charity, Chastity
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/captivestate.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/c10.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Captive State
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/theclapper.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/cl2.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Clapper
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/csi.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/csi8.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        CSI
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/cymbeline.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/ph10.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Cymbeline
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/deadwax.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/scotty2.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Deadwax
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/adirtyshame.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/dd6.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        A Dirty Shame
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/doulo.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/dou8.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Doulo
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/downtown.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/bi7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Downtown: A Street Tale
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/electricslide.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/jan4.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Electric Slide
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/empirestate.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/empire.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Empire State
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/falsetrue.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/t11.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        False True Love
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/familyblood.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/christopher-3.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Family Blood
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/thefirst.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/f13.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The First
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/fishinthesea.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/jack7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Fish in the Sea
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/fruitsdemer.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/fruits.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Fruits de Mer
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/gemini.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/03-7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Gemini
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/genkill.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/ray1-3.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Generation Kill
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/goodhumor.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/good.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Good Humor Man
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/hawaii50.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/h7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Hawaii Five-0
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/htmiia.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/14-6.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        How to Make It in America
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/iavov.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/z_(1).gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        In a Valley of Violence
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/insideman.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/in11.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Inside Man
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/fourstories.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/j10.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Introducing Four Stories
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/it.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/eds4.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        IT Chapter 2
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/ithappened.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/02-5.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        It Happened in LA
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/jericho.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/008.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Jericho
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/lawandorder11.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/law.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Law &amp; Order - S11
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/lawandorder17.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/lo1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Law &amp; Order - S17
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/thelie.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/02-7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Lie
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/lws.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/07-6.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Low Winter Sun
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/lutn.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/lutn19-alt.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Light Up the Night
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/kristy.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/01-3.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Kristy
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/manwho.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/man7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Man Who Came Out Only at Night
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/mosaic.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/m13.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Mosaic
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/mrright.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/von9.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Mr. Right
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/mosaic.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/next-three.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Next Three Days
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/oldboy.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/fb187e0916d5d1ca585c80a761504936abfe5687.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Oldboy
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/perfectage.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/0b70ffb31b1960325251d905f411b2d008f2bfc7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Perfect Age of Rock 'n' Roll
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/prius.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/11-6.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Prius - The Longest Chase
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/promnight.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/n7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Prom Night
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/rhs.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/03-1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Red Hook Summer
+      </fc>
+    </a>
+  </div>
+
+  <div class="item tv">
+    <a href="/sealteam.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/r1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Seal Team
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/sinister.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/08-15.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Sinister
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/sinister2.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/deputy1_(5).gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Sinister 2
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/sinister2.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/sme1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Small Engine Repair
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/sonofnoone.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/03-2(1).gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Son of No One
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/starlet.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/05-3.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Starlet
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/tangerine.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/ch2.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Tangerine
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/thisamericanlife.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/tal-7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        This American Life
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/timber.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/timber.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        The Timber
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/toughlove.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/04-5.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Tough Love
+      </fc>
+    </a>
+  </div>
+
+  <div class="item short">
+    <a href="/truthordare.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/06-1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Truth or Dare
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/whatwefound.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/wh-10.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        What We Found
+      </fc>
+    </a>
+  </div>
+
+  <div class="item movies">
+    <a href="/writewhen.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/01-7.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Write When You Get Work
+      </fc>
+    </a>
+  </div>
+
+  <div class="item projects">
+    <a href="/miscprojects.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/lovemonkey.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Misc Projects (LQ)
+      </fc>
+    </a>
+  </div>
+
+  <div class="item misc">
+    <a href="/press.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/04-1.gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Press and Appearances
+      </fc>
+    </a>
+  </div>
+
+  <div class="item misc">
+    <a href="/surf.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/03-1(1).gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Surf Simply Stories
+      </fc>
+    </a>
+  </div>
+
+  <div class="item misc">
+    <a href="/misc.html">
+      <img class="Sirv"
+           data-src="https://aneusome.sirv.com/previews/05 (1).gif?scale.option=fill&scale.width=268&quality=80">
+      <fc>
+        Miscellaneous
+      </fc>
+    </a>
+  </div>
+
+  <a href="https://osvaldrps.tumblr.com" class="cr">ov</a>
+</div>
+
+<script>
+      var SirvOptions = {
+        image: {
+            threshold: 5000
+        }
+    };
+</script>
+
+</body>
+</html>
