@@ -102,6 +102,12 @@ img.tall {
 	height: 168px;
 }
 
+img.tall2 {
+	object-fit: cover;
+	width: 100px;
+	height: 168px;
+}
+
 img.wide {
 	object-fit: cover;
 	width: 200px;
